@@ -8,15 +8,21 @@ using AspNetCoreBackend.Models;
 
 namespace AspNetCoreBackend.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : Controller //luokka periytyy Controller luokasta
     {
         public IActionResult Index()
         {
-            return View();
+
+            string tiedosto = @"C:\Users\Reijo\Desktop\Code_Camp\WebDemo\AspNetCoreBackend\AspNetCoreBackend\wwwroot\Otsikot.txt";
+            List<string> otsikot = System.IO.File.ReadAllLines(tiedosto).ToList();
+
+
+            return View(otsikot);
         }
 
         public IActionResult About()
         {
+            // ViewData määritelty Controller luokassa
             ViewData["Message"] = "Your application description page.";
 
             return View();
@@ -38,6 +44,11 @@ namespace AspNetCoreBackend.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult Info()
+        {
+            return View();
         }
     }
 }
