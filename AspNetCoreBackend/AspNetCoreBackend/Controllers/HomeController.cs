@@ -55,7 +55,29 @@ namespace AspNetCoreBackend.Controllers
 
         public IActionResult Autot()
         {
-            return View();
+            List<Auto> autot = new List<Auto>()
+            {
+                new Auto()
+                {
+                    Merkki = "Ford",
+                    Malli = "Focus",
+                    Huippunopeus = 190
+                },
+                new Auto()
+                {
+                    Merkki = "Toyota",
+                    Malli = "Avensis",
+                    Huippunopeus = 220
+                },
+                new Auto()
+                {
+                    Merkki = "Porsche",
+                    Malli = "911",
+                    Huippunopeus = 300
+                }
+            };
+
+            return View(autot);
         }
 
         public IActionResult Asiakkaat()
