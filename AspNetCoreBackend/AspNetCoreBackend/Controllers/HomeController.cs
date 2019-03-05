@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AspNetCoreBackend.Models;
+using AspNetCoreBackend.Database;
 
 namespace AspNetCoreBackend.Controllers
 {
@@ -50,6 +51,14 @@ namespace AspNetCoreBackend.Controllers
         public IActionResult Info()
         {
             return View();
+        }
+
+        public IActionResult Asiakkaat()
+        {
+            NorthwindContext context = new NorthwindContext();
+            List<Customers> allCustomers = context.Customers.ToList();
+
+            return View(allCustomers);
         }
     }
 }
