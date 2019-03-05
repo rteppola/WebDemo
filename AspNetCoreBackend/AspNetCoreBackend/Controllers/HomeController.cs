@@ -53,6 +53,11 @@ namespace AspNetCoreBackend.Controllers
             return View();
         }
 
+        public IActionResult Autot()
+        {
+            return View();
+        }
+
         public IActionResult Asiakkaat()
         {
             NorthwindContext context = new NorthwindContext();
