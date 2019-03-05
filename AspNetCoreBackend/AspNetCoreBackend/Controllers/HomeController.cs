@@ -13,7 +13,8 @@ namespace AspNetCoreBackend.Controllers
         public IActionResult Index()
         {
 
-            string tiedosto = @"C:\Users\Reijo\Desktop\Code_Camp\WebDemo\AspNetCoreBackend\AspNetCoreBackend\wwwroot\Otsikot.txt";
+            //string tiedosto = @"C:\Users\Reijo\Desktop\Code_Camp\WebDemo\AspNetCoreBackend\AspNetCoreBackend\wwwroot\Otsikot.txt";
+            string tiedosto = @"..\AspNetCoreBackend\wwwroot\Otsikot.txt";
             List<string> otsikot = System.IO.File.ReadAllLines(tiedosto).ToList();
 
 
