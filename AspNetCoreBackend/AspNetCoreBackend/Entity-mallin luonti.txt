@@ -1,0 +1,3 @@
+﻿Entity-mallin mukaisten tiedostojen luonti Package Manager Consolissa:
+
+Scaffold-DbContext "Server=localhost\SQLEXPRESS;Database=Northwind;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Database
