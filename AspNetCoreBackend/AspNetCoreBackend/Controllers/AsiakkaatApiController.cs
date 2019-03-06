@@ -13,7 +13,8 @@ namespace AspNetCoreBackend.Controllers
     [ApiController]
     public class AsiakkaatApiController : ControllerBase
     {
-        [Route("listaus")] // ei case sensitiivinen
+      //  [Route("listaus")] // ei case sensitiivinen
+        [Route("")] // => <web-osoite>/api/asiakkaat
         public List<Customers> Listaus()
         {
             NorthwindContext context = new NorthwindContext();
@@ -22,7 +23,8 @@ namespace AspNetCoreBackend.Controllers
             return allCustomers;
         }
 
-        [Route("yksittäinen/{asiakasId}")] // ei case sensitiivinen
+        // aaltosuluisa olevasta asiakasId:stä tulee muuttuja
+        [Route("{asiakasId}")] // => <web-osoite>/api/asiakkaat/{asiakasId}
         public Customers Yksittäinen(string asiakasId)
         {
             NorthwindContext context = new NorthwindContext();
