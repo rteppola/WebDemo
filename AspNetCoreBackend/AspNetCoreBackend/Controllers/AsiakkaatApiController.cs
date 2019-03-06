@@ -14,6 +14,7 @@ namespace AspNetCoreBackend.Controllers
     public class AsiakkaatApiController : ControllerBase
     {
       //  [Route("listaus")] // ei case sensitiivinen
+        [HttpGet]   // hyväksytään vain GET
         [Route("")] // => <web-osoite>/api/asiakkaat
         public List<Customers> Listaus()
         {
@@ -24,6 +25,7 @@ namespace AspNetCoreBackend.Controllers
         }
 
         // aaltosuluisa olevasta asiakasId:stä tulee muuttuja
+        [HttpGet]
         [Route("{asiakasId}")] // => <web-osoite>/api/asiakkaat/{asiakasId}
         public Customers Yksittäinen(string asiakasId)
         {
@@ -37,5 +39,17 @@ namespace AspNetCoreBackend.Controllers
 
             return asiakas;
         }
+
+        [HttpPost]
+        [Route("")] // => <web-osoite>/api/asiakkaat
+        public bool Luonti(Customers uusi)
+        {
+            NorthwindContext context = new NorthwindContext();
+            context.Customers.Add(uusi);
+            context.SaveChanges();  // muutokset tallennetaan
+
+            return true;
+        }
+
     }
 }

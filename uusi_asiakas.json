@@ -1,0 +1,15 @@
+{
+    "customerId": "UUSI1",
+    "companyName": "Uusi Oy - Web API",
+    "contactName": "Matti Möttönen",
+    "contactTitle": "Tirehtööri",
+    "address": "Yrityspolku 15 B",
+    "city": "Oulu",
+    "region": null,
+    "postalCode": "90520",
+    "country": "Finland",
+    "phone": "08-1234567",
+    "fax": "08-7654321",
+    "customerCustomerDemo": [],
+    "orders": []
+}
