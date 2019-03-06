@@ -24,7 +24,7 @@ namespace AspNetCoreBackend.Controllers
             return allCustomers;
         }
 
-        // aaltosuluisa olevasta asiakasId:stä tulee muuttuja
+        // aaltosuluisa olevasta asiakasId:stä tulee parametri
         [HttpGet]
         [Route("{asiakasId}")] // => <web-osoite>/api/asiakkaat/{asiakasId}
         public Customers Yksittäinen(string asiakasId)
@@ -42,7 +42,7 @@ namespace AspNetCoreBackend.Controllers
 
         [HttpPost]
         [Route("")] // => <web-osoite>/api/asiakkaat
-        public bool Luonti(Customers uusi)
+        public bool Luonti([FromBody] Customers uusi)
         {
             NorthwindContext context = new NorthwindContext();
             context.Customers.Add(uusi);
@@ -50,6 +50,37 @@ namespace AspNetCoreBackend.Controllers
 
             return true;
         }
+
+        [HttpPut]
+        [Route("{asiakasId}")]
+        public Customers Muokkaus(string asiakasId, [FromBody] Customers muutokset)
+        {
+            NorthwindContext context = new NorthwindContext();
+            Customers asiakas = context.Customers.Find(asiakasId);
+
+            //löytyykö asiakas annetulla id:llä?
+            if(asiakas == null)
+            {
+                return null;
+            }
+
+            //muokkaus
+            asiakas.CompanyName = muutokset.CompanyName;
+            asiakas.ContactName = muutokset.ContactName;
+            asiakas.ContactTitle = muutokset.ContactTitle;
+            asiakas.City = muutokset.City;
+            asiakas.Country = muutokset.Country;
+            asiakas.Phone = muutokset.Phone;
+            asiakas.Fax = muutokset.Fax;
+            asiakas.Address = muutokset.Address;
+            asiakas.Region = muutokset.Region;
+            asiakas.PostalCode = muutokset.PostalCode;
+
+            context.SaveChanges();
+            return asiakas;
+        }
+
+    //    [HttpDelete]
 
     }
 }
